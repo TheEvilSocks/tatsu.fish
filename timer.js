@@ -33,7 +33,7 @@ function blub() {
 	document.body.appendChild(fish);
 
 	fish.style.left = `${window.innerWidth / 2 - fish.clientWidth / 2}px`;
-	fish.style.bottom = (oceans[0].clientHeight - fish.clientHeight / 2) + 'px';
+	fish.style.bottom = (oceans[0].clientHeight - fish.clientHeight / 3) + 'px';
 
 	setTimeout(() => {
 		document.body.removeChild(fish);
