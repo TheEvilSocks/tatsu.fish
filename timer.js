@@ -40,6 +40,7 @@ function blub() {
 	}, fishCooldown * 500);
 
 	const audio = new Audio(`sounds/${randomElement(caughtSounds)}.ogg`);
+	audio.volume = 0.4;
 	audio.play();
 }
 
