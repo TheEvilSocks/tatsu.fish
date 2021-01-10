@@ -9,22 +9,26 @@ const fishLootTable = [
 	{
 		name: 'Garbage',
 		chance: 0.55,
-		icons: ['battery', 'paperclip', 'shoe', 'shopping_cart', 'wrench'].map(ic => `garbage/${ic}.svg`)
+		path: (icon) => `garbage/${icon}.svg`,
+		icons: ['battery', 'paperclip', 'shoe', 'shopping_cart', 'wrench']
 	},
 	{
 		name: 'Common',
 		chance: 0.3485,
-		icons: ['fish'].map(ic => `common/${ic}.svg`)
+		path: (icon) => `common/${icon}.svg`,
+		icons: ['fish']
 	},
 	{
 		name: 'Uncommon',
 		chance: 0.10,
-		icons: ['tropical_fish'].map(ic => `uncommon/${ic}.svg`)
+		path: (icon) => `uncommon/${icon}.svg`,
+		icons: ['tropical_fish']
 	},
 	{
 		name: 'Rare',
 		chance: 0.0015,
-		icons: ['crab', 'crocodile', 'dolphin', 'octopus', 'penguin', 'shark', 'shrimp', 'squid', 'turtle', 'whale', 'whale2'].map(ic => `rare/${ic}.svg`)
+		path: (icon) => `rare/${icon}.svg`,
+		icons: ['crab', 'crocodile', 'dolphin', 'octopus', 'penguin', 'shark', 'shrimp', 'squid', 'turtle', 'whale', 'whale2']
 	},
 ];
 

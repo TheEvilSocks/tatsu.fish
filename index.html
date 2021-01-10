@@ -19,9 +19,16 @@
 </head>
 
 <body>
-	<button dd-toggle="theme" id="theme-changer">
-		Theme change pls
-	</button>
+
+	<div id="volume-control" class="setting" title="Volume Control">
+		<img src="icons/volume.svg" width='32px;' />
+		<input type="range" id="volume-range" min='0' max='100' />
+		<label id="volume-label" for="volume-range">???</label>
+	</div>
+
+	<div dd-toggle="theme" id="theme-changer" class="setting">
+		<img id="bulb" src="icons/bulb_light.svg" title="Theme Switcher" />
+	</div>
 
 	<h1>Fishy timer</h1>
 	<h2 id="time"></h2>
@@ -32,7 +39,7 @@
 
 </body>
 
-<script src=" theme-switcher.js"></script>
+<script src="user-control.js"></script>
 <script src="script.js"></script>
 <script src="ocean.js"></script>
 <script src="timer.js"></script>

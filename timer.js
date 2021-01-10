@@ -1,6 +1,7 @@
 const fishCooldown = 30;
 const time = document.getElementById('time');
 const caughtSounds = ['fishing_catch_1', 'fishing_catch_2', 'fishing_catch_3'];
+let lastSound;
 
 let fishyTimerStart;
 function doTimer(timestamp) {
@@ -27,38 +28,45 @@ function doTimer(timestamp) {
 }
 
 function blub() {
-	const fish = document.createElement('img');
-	fish.className = 'fish';
-	fish.src = 'icons/' + randomElement(randomFish().icons);
-	document.body.appendChild(fish);
+	const fish = randomFish();
+	const fishLoot = randomElement(fish.icons)
 
-	fish.style.left = `${window.innerWidth / 2 - fish.clientWidth / 2}px`;
-	fish.style.bottom = (oceans[0].clientHeight - fish.clientHeight / 3) + 'px';
+	const fishElem = document.createElement('img');
+	fishElem.classList.add(...['fish', fishLoot]);
+	fishElem.src = 'icons/' + fish.path(fishLoot);
+	document.body.appendChild(fishElem);
+
+	fishElem.style.left = `${window.innerWidth / 2 - fishElem.clientWidth / 2}px`;
+	fishElem.style.bottom = (oceans[0].clientHeight - fishElem.clientHeight / 3) + 'px';
 
 	setTimeout(() => {
-		document.body.removeChild(fish);
+		document.body.removeChild(fishElem);
 	}, fishCooldown * 500);
 
 	const audio = new Audio(`sounds/${randomElement(caughtSounds)}.ogg`);
-	audio.volume = 0.4;
+	audio.volume = volume / 100; // Slider goes from 0-100, but audio accepts 0-1
 	audio.play();
+	lastSound = audio;
+	lastSound.addEventListener('ended', () => {
+		lastSound = undefined;
+	});
 }
 
 window.requestAnimationFrame(doTimer);
-
-// Preload images
-for (const fish of fishLootTable) {
-	for (let icon of fish.icons) {
-
-		const fish = document.createElement('img');
-		fish.style.display = 'none';
-		fish.src = 'icons/' + icon;
-		document.body.appendChild(fish);
-	}
-}
 
 window.addEventListener('resize', event => {
 	for (const fish of document.getElementsByClassName('fish')) {
 		fish.style.left = `${window.innerWidth / 2 - fish.clientWidth / 2}px`;
 	}
 });
+
+// Preload images
+for (const fish of fishLootTable) {
+	for (let icon of fish.icons) {
+
+		const fishElem = document.createElement('img');
+		fishElem.style.display = 'none';
+		fishElem.src = 'icons/' + fish.path(icon);
+		document.body.appendChild(fishElem);
+	}
+}
