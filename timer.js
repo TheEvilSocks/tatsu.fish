@@ -55,3 +55,9 @@ for (const fish of fishLootTable) {
 		document.body.appendChild(fish);
 	}
 }
+
+window.addEventListener('resize', event => {
+	for (const fish of document.getElementsByClassName('fish')) {
+		fish.style.left = `${window.innerWidth / 2 - fish.clientWidth / 2}px`;
+	}
+});
