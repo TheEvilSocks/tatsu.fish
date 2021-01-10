@@ -30,9 +30,9 @@ function blub() {
 	const fish = document.createElement('img');
 	fish.className = 'fish';
 	fish.src = 'icons/' + randomElement(randomFish().icons);
-	fish.style.left = `${window.innerWidth / 2 + fish.clientWidth / 2}px`;
 	document.body.appendChild(fish);
 
+	fish.style.left = `${window.innerWidth / 2 - fish.clientWidth / 2}px`;
 	fish.style.bottom = (oceans[0].clientHeight - fish.clientHeight / 2) + 'px';
 
 	setTimeout(() => {

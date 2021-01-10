@@ -1,5 +1,4 @@
 const oceans = document.getElementsByClassName('ocean');
-const startWidth = oceans[0].clientWidth;
 let oceanStart;
 
 for (const ocean of oceans) {
@@ -14,7 +13,7 @@ function doWave(timestamp) {
 	const elapsed = timestamp - oceanStart;
 
 	for (const ocean of oceans) {
-		ocean.style.width = `${startWidth + elapsed * 0.1}px`;
+		ocean.style.width = `${window.innerWidth + elapsed * 0.1}px`;
 		ocean.style.transform = `translateX(${-elapsed * 0.1}px)`;
 	}
 
