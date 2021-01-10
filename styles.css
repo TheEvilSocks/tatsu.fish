@@ -32,6 +32,7 @@ body {
     background-color: var(--bg);
     color: var(--clr-text);
     overflow-x: hidden;
+    font-family: 'Rubik', sans-serif;
 }
 
 #theme-changer {
@@ -58,6 +59,23 @@ h2 {
     position: absolute;
     transition: bottom 3s;
     bottom: 0;
-	width: 10%;
-	z-index: -1;
+    width: 10%;
+    z-index: -1;
+}
+
+@media only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+    h1 {
+        font-size: 96px !important;
+    }
+
+    h2 {
+        font-size: 64px !important;
+    }
+
+    .fish {
+        width: 25% !important;
+    }
 }
