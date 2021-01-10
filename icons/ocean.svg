@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	preserveAspectRatio="xMidYMid" viewBox="0 0 322 322">
+
+	<g transform="scale(1.26)">
+		<path
+			d="M -256 19.066666666666666 C -192 19.066666666666666 -192 2 -128 2 C -64 2 -64 19.066666666666666 2 19.066666666666666 C 64 19.066666666666666 64 2 128 2 C 192 2 192 19.066666666666666 256 19.066666666666666 L 384 384 L -384 384 L -384 19.066666666666666 Z"
+			fill="#0099f8" stroke="#0099f8" stroke-width="1">
+		</path>
+	</g>
+</svg>

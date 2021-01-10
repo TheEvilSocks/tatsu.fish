@@ -1,0 +1,63 @@
+:root {
+    --pf: 'Source Sans Pro', sans-serif;
+    --transition: all .5s;
+}
+
+.light,
+body[color-theme="light"] {
+    --bg: #f0f8ff;
+    --bg-light: rgba(255, 255, 255, .8);
+    --clr-text: #182227;
+    --clr-text-light: #182227bb;
+    --clr-element: #34506e;
+    --clr-element-hover: #34506ebb;
+    --clr-shadow: rgba(0, 0, 0, .15);
+}
+
+.dark,
+body[color-theme="dark"] {
+    --bg: #182227;
+    --bg-light: rgba(255, 255, 255, .15);
+    --clr-text: #FCE8Ec;
+    --clr-text-light: #FCE8Ecbb;
+    --clr-element: #FFABC2;
+    --clr-element-hover: #FFABC2bb;
+    --clr-shadow: rgba(0, 0, 0, .2);
+}
+
+
+body {
+    height: auto;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--clr-text);
+    overflow-x: hidden;
+}
+
+#theme-changer {
+    position: fixed;
+    top: 4px;
+    right: 4px;
+}
+
+.ocean {
+    position: absolute;
+    left: 0x;
+    min-width: 100%;
+    background-image: url(icons/ocean.svg);
+    background-repeat: repeat-x;
+    height: 40%;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+.fish {
+    position: absolute;
+    transition: all 3s;
+    bottom: 0;
+	width: 8%;
+	z-index: -1;
+}
