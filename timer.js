@@ -30,18 +30,20 @@ function doTimer(timestamp) {
 
 function blub() {
 	const fish = pumFeature ? fishLootTable.find(f => f.name == 'Uncommon') : randomFish();
-	const fishLoot = randomElement(fish.icons)
+	const fishIcon = randomElement(fish.icons);
 
-	const fishElem = document.createElement('img');
-	fishElem.classList.add(...['fish', fishLoot]);
-	fishElem.src = 'icons/' + fish.path(fishLoot);
-	document.body.appendChild(fishElem);
-
+	const fishElem = document.getElementById(`${fish.name}_${fishIcon}`);
+	fishElem.style.bottom = '0px';
+	fishElem.style.display = 'unset';
 	fishElem.style.left = `${window.innerWidth / 2 - fishElem.clientWidth / 2}px`;
 	fishElem.style.bottom = (oceans[0].clientHeight - fishElem.clientHeight / 3) + 'px';
 
 	setTimeout(() => {
-		document.body.removeChild(fishElem);
+		setTimeout(() => {
+			fishElem.style.display = 'none';
+			fishElem.style.opacity = '1';
+		}, 2000);
+		fishElem.style.opacity = '0';
 	}, fishCooldown * 500);
 
 	const audio = new Audio(`sounds/${randomElement(caughtSounds)}.ogg`);
@@ -64,10 +66,11 @@ window.addEventListener('resize', event => {
 // Preload images
 for (const fish of fishLootTable) {
 	for (let icon of fish.icons) {
-
 		const fishElem = document.createElement('img');
 		fishElem.style.display = 'none';
 		fishElem.src = 'icons/' + fish.path(icon);
+		fishElem.id = `${fish.name}_${icon}`;
+		fishElem.classList.add(...['fish', icon]);
 		document.body.appendChild(fishElem);
 	}
 }
