@@ -2,6 +2,7 @@ const fishCooldown = 30;
 const time = document.getElementById('time');
 const caughtSounds = ['fishing_catch_1', 'fishing_catch_2', 'fishing_catch_3'];
 let lastSound;
+let pumFeature = false;
 
 let fishyTimerStart;
 function doTimer(timestamp) {
@@ -28,7 +29,7 @@ function doTimer(timestamp) {
 }
 
 function blub() {
-	const fish = randomFish();
+	const fish = pumFeature ? fishLootTable.find(f => f.name == 'Uncommon') : randomFish();
 	const fishLoot = randomElement(fish.icons)
 
 	const fishElem = document.createElement('img');
