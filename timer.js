@@ -29,11 +29,11 @@ function doTimer(timestamp) {
 }
 
 function blub() {
-	const fish = pumFeature ? fishLootTable.find(f => f.name == 'Uncommon') : randomFish();
-	const fishIcon = randomElement(fish.icons);
+	const fish = randomFish();
 
-	const fishElem = document.getElementById(`${fish.name}_${fishIcon}`);
+	const fishElem = document.getElementById(`${fish.category.name}_${fish.name}`);
 	fishElem.style.bottom = '0px';
+	fish.title = fish.friendlyName;
 	fishElem.style.display = 'unset';
 	fishElem.style.left = `${window.innerWidth / 2 - fishElem.clientWidth / 2}px`;
 	fishElem.style.bottom = (oceans[0].clientHeight - fishElem.clientHeight / 3) + 'px';
@@ -46,13 +46,22 @@ function blub() {
 		fishElem.style.opacity = '0';
 	}, fishCooldown * 500);
 
-	const audio = new Audio(`sounds/${randomElement(caughtSounds)}.ogg`);
-	audio.volume = volume / 100; // Slider goes from 0-100, but audio accepts 0-1
-	audio.play();
-	lastSound = audio;
-	lastSound.addEventListener('ended', () => {
-		lastSound = undefined;
-	});
+	if (!lastSound) {
+		const audio = new Audio(`sounds/${randomElement(caughtSounds)}.ogg`);
+		audio.volume = volume / 100; // Slider goes from 0-100, but audio accepts 0-1
+		audio.play();
+		lastSound = audio;
+		lastSound.addEventListener('ended', () => {
+			lastSound = undefined;
+		});
+	}
+
+	if (fish.category.name === 'Rare') {
+		rarefish.push(fish.name);
+		window.localStorage.setItem('rarefish', JSON.stringify(rarefish));
+		drawRareFish();
+	}
+
 }
 
 window.requestAnimationFrame(doTimer);

@@ -33,20 +33,44 @@ const fishLootTable = [
 ];
 
 function randomFish() {
-	let sum = 0;
-	for (const fish of fishLootTable)
-		sum += fish.chance;
+	let category;
+	if (pumFeature) {
+		category = fishLootTable.find(cat => cat.name == 'Uncommon');
+	} else {
+		let sum = 0;
+		for (const cat of fishLootTable)
+			sum += cat.chance;
 
-	const selected = Math.random() * sum;
+		const selected = Math.random() * sum;
 
-	let total = 0;
-	for (const fish of fishLootTable) {
-		total += fish.chance;
-		if (selected <= total)
-			return fish;
+		let total = 0;
+		for (const cat of fishLootTable) {
+			total += cat.chance;
+			if (selected <= total) {
+				category = cat;
+				break;
+			}
+		}
+	}
+
+	const icon = randomElement(category.icons);
+
+	return {
+		name: icon,
+		friendlyName: friendlyString(icon),
+		icon: category.path(icon),
+		category: category
 	}
 }
 
 function randomElement(array) {
 	return array[Math.floor(Math.random() * array.length)];
+}
+
+function friendlyString(name) {
+	let ret = [];
+	name = name.replace(/_/g, ' ').trim();
+	for (let word of name.split(/\s/g))
+		ret.push(word.substring(0, 1).toUpperCase() + word.substring(1))
+	return ret.join(' ');
 }

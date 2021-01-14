@@ -9,8 +9,6 @@ body[color-theme="light"] {
     --bg-light: rgba(255, 255, 255, .8);
     --clr-text: #182227;
     --clr-text-light: #182227bb;
-    --clr-element: #34506e;
-    --clr-element-hover: #34506ebb;
     --clr-shadow: rgba(0, 0, 0, .15);
 }
 
@@ -20,8 +18,6 @@ body[color-theme="dark"] {
     --bg-light: rgba(255, 255, 255, .15);
     --clr-text: #FCE8Ec;
     --clr-text-light: #FCE8Ecbb;
-    --clr-element: #FFABC2;
-    --clr-element-hover: #FFABC2bb;
     --clr-shadow: rgba(0, 0, 0, .2);
 }
 
@@ -33,6 +29,11 @@ body {
     color: var(--clr-text);
     overflow-x: hidden;
     font-family: 'Rubik', sans-serif;
+}
+
+a {
+    color: var(--clr-text-light);
+    font-weight: bold;
 }
 
 #theme-changer {
@@ -56,7 +57,7 @@ h1, h2, h3, h4, h5 {
 
 .fish {
     position: absolute;
-    transition: all 2s;
+    transition: bottom 2s, opacity 1s;
     bottom: 0;
     width: 10%;
     z-index: -1;
@@ -66,10 +67,11 @@ h1, h2, h3, h4, h5 {
 #bulb {
     min-width: 64px;
     width: 8%;
-    cursor: pointer;
 }
 
 .setting {
+    cursor: pointer;
+    z-index: 128;
     transition: opacity 1s;
     opacity: 0.2;
 }
@@ -82,17 +84,89 @@ h1, h2, h3, h4, h5 {
     position: absolute;
     bottom: 4px;
     left: 4px;
-    z-index: 255;
+}
+
+#backpack {
+    position: absolute;
+    cursor: pointer;
+    right: 4px;
+    bottom: 4px;
+    min-width: 64px;
+    width: 4%;
 }
 
 #volume-control * {
     vertical-align: middle;
 }
 
+/*#inventory {
+    text-align: center;
+    width: 60%;
+    padding: 1%;
+    margin: auto;
+    z-index: 255;
+}*/
+
+#inventory {
+    position: absolute;
+    z-index: 255;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+}
+
+#rarefish {
+    bottom: 0px;
+    width: 80%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#rarefish img {
+    width: 8%;
+    margin: 8px;
+    cursor: grab;
+}
+
+#rarefish img:active {
+    cursor: grabbing;
+}
+
+#trashcan { 
+    position: fixed;
+    top: 4%;
+    right: 4%;
+    width: 8%;
+    border: 4px dashed gray;
+    padding: 4px;
+}
+
+#inv_about { 
+    position: fixed;
+    top: 24%;
+    right: 4%;
+    width: 12%;
+    padding: 4px;
+    display: block;
+}
+
+#howdy {
+    position: fixed;
+    right: 4%;
+    width: 12%;
+    bottom:8%;
+    padding: 4px;
+    display: block;
+}
+
 @media only screen and (min--moz-device-pixel-ratio: 2),
 only screen and (-o-min-device-pixel-ratio: 2/1),
 only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min-device-pixel-ratio: 2) {
+only screen and (min-device-pixel-ratio: 2), 
+only screen and (max-width: 900px){
     h1 {
         font-size: 96px !important;
     }
@@ -103,5 +177,20 @@ only screen and (min-device-pixel-ratio: 2) {
     
     .fish {
         width: 25% !important;
+    }
+    
+    #rarefish img {
+        width: 16%;
+    }
+    #deleteRarefish {
+        width: 16%;
+    }
+    
+    #rarefish {
+        width: 80%;
+    }
+
+    #inv_about {
+        display: none;
     }
 }

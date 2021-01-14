@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-	<link rel="preload" href="script.js" as="script">
-	<link rel="preload" href="ocean.js" as="script">
-	<link rel="preload" href="pum-who-likes-to-tfishy.js" as="script">
-	<link rel="preload" href="timer.js" as="script">
 	<link rel="preload" href="user-control.js" as="script">
+	<link rel="preload" href="fishInfo.js" as="script">
+	<link rel="preload" href="ocean.js" as="script">
+	<link rel="preload" href="timer.js" as="script">
+	<link rel="preload" href="rarefish.js" as="script">
+	<link rel="preload" href="pum-who-likes-to-tfishy.js" as="script">
 
 	<link rel="preload" href="styles.css" as="style">
 
@@ -28,10 +29,14 @@
 	<link rel="preload" href="icons/rare/whale.svg" as="image">
 	<link rel="preload" href="icons/rare/whale2.svg" as="image">
 	<link rel="preload" href="icons/uncommon/tropical_fish.svg" as="image">
+	
 	<link rel="preload" href="icons/bulb_dark.svg" as="image">
 	<link rel="preload" href="icons/bulb_light.svg" as="image">
 	<link rel="preload" href="icons/ocean.svg" as="image">
 	<link rel="preload" href="icons/volume.svg" as="image">
+
+	<link rel="preload" href="icons/trash.gif" as="image">
+	<link rel="preload" href="icons/backpack.png" as="image">
 
 	<link rel="preload" href="sounds/fishing_catch_1.ogg" as="audio">
 	<link rel="preload" href="sounds/fishing_catch_2.ogg" as="audio">
@@ -54,29 +59,51 @@
 </head>
 
 <body>
-
-	<div id="volume-control" class="setting" title="Volume Control">
+	<div id="volume-control" hide-when-inventory class="setting" title="Volume Control">
 		<img src="icons/volume.svg" width='32px;' />
 		<input type="range" id="volume-range" min='0' max='100' />
 		<label id="volume-label" for="volume-range">???</label>
 	</div>
 
-	<div dd-toggle="theme" id="theme-changer" class="setting">
+	<div dd-toggle="theme" hide-when-inventory id="theme-changer" class="setting">
 		<img id="bulb" src="icons/bulb_light.svg" title="Theme Switcher" />
 	</div>
 
-	<h1>Fishy timer</h1>
-	<h2 id="time"></h2>
+	<img id="backpack" style="z-index:256;" class="setting" src="icons/backpack.png" title="Open your inventory" />
 
-	<div class="ocean" style="z-index: 0;bottom: 0px"></div>
-	<div class="ocean" style="z-index: -1;bottom: 4%; opacity: 0.25;"></div>
-	<div class="ocean" style="z-index: -2;bottom: 8%; opacity: 0.25;"></div>
+	<h1 hide-when-inventory>Fishy timer</h1>
+	<h2 id="time" hide-when-inventory></h2>
+
+	<div class="ocean" style="z-index: 0; bottom: 0px"></div>
+	<div class="ocean" style="z-index: -1; bottom: 4%; opacity: 0.25;"></div>
+	<div class="ocean" style="z-index: -2; bottom: 8%; opacity: 0.25;"></div>
+
+	<div id="inventory" style="display: none;">
+		<img id="trashcan" title="Drop a rarefish onto me to delete it from your inventory."
+			ondrop="dragDrop_rarefish(event);" ondragover="dragOver_rarefish(event);" src="icons/trash.gif" />
+		<div id="inv_about">
+			<h2>Inventory</h2>
+			This is your inventory. It will display all the <b>rarefish</b> you caught.
+			<div id="howdy">
+				<h2>Howdy</h2>
+				This is a fan website for the well-known bot <a href="https://tatsu.gg/" target="_BLANK">Tatsu</a>.
+				<br /><br /><br />
+				tatsu.fish is not affiliated with Tatsu, and in no way will fishing here reflect any changes on the real
+				bot.
+				<br /><br />
+				The 'Backpack' and 'Trashcan' icons are &copy; Copyright <a
+					href="https://www.tatsu.works/">TatsuWorks</a>
+			</div>
+		</div>
+		<div id="rarefish"></div>
+	</div>
 
 </body>
 
 <script src="user-control.js"></script>
-<script src="script.js"></script>
+<script src="fishInfo.js"></script>
 <script src="ocean.js"></script>
+<script src="rarefish.js"></script>
 <script src="timer.js"></script>
 <script src="pum-who-likes-to-tfishy.js"></script>
 
