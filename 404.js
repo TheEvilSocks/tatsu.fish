@@ -1,7 +1,7 @@
 function blub() {
 	const fishElem = document.createElement('img');
 	fishElem.classList.add(...['fish', 'dolphin']);
-	fishElem.src = 'icons/rare/dolphin.svg';
+	fishElem.src = '/icons/rare/dolphin.svg';
 	document.body.appendChild(fishElem);
 
 	fishElem.style.left = `${Math.random() * window.innerWidth}px`;
