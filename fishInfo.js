@@ -28,7 +28,7 @@ const fishLootTable = [
 		name: 'Rare',
 		chance: 0.0015,
 		path: (icon) => `rare/${icon}.svg`,
-		icons: ['crab', 'crocodile', 'dolphin', 'octopus', 'penguin', 'shark', 'shrimp', 'squid', 'turtle', 'whale', 'whale2', 'blowfish']
+		icons: ['crab', 'crocodile', 'dolphin', 'octopus', 'penguin', 'shark', 'shrimp', 'squid', 'turtle', 'whale', 'whale2', 'blowfish', 'beaver', 'otter', 'seal', 'jellyfish', 'beetle', 'snail', 'duck', 'frog', 'lizard', 'snake', 'flamingo', 'swan']
 	},
 ];
 
